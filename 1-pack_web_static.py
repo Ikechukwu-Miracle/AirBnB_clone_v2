@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ This module contains the function do_pack that generates a .tgz archive
     from the contents of the web_static folder (fabric script) """
-
 from fabric.api import local
 from datetime import datetime
+
 
 def do_pack():
     """Generate a .tgz archive from web_static"""
