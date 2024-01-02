@@ -124,18 +124,17 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         new_instance = eval(args[0])()
 
-        if len(args > 1):
-            for i in range(1, len(args)):
-                key, value = tuple(args[i].split("="))
-                if value.startswith('"'):
-                    value = value.strip('"').replace('_', ' ')
-                else:
-                    try:
-                        value = eval(value)
-                    except Exception:
-                        pass
+        for i in range(1, len(args)):
+            key, value = tuple(args[i].split("="))
+            if value.startswith('"'):
+                value = value.strip('"').replace('_', ' ')
+            else:
+                try:
+                    value = eval(value)
+                except Exception:
+                    pass
 
-                setattr(new_instance, key, value)
+            setattr(new_instance, key, value)
         storage.new(new_instance)
         print(new_instance.id)
         new_instance.save()
